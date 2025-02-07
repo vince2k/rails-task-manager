@@ -1,0 +1,25 @@
+<h1 class="my-3">My tasks</h1>
+
+<ul class="list-group mb-3 w-50">
+  <% @tasks.each do |task| %>
+    <li class="list-group-item">
+      <% if task.completed %>
+        <i class="fa-regular fa-square-check"></i>
+      <% else %>
+        <i class="fa-regular fa-square"></i>
+      <% end %>
+      <%= link_to task.title, task_path(task) %>
+      <span class="ms-2">·</span>
+      <%= link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"text-secondary ms-2" do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+   </li>
+  <% end %>
+</ul>
+
+<hr class="my-4">
+
+<%= link_to new_task_path(@task) do %>
+<i class="fa-solid fa-plus"></i>
+<span>Add a new task</span>
+<% end %>

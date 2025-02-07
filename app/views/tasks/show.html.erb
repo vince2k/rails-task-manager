@@ -1,0 +1,26 @@
+<div class="d-flex align-items-center gap-3">
+<h1 class="my-3"><%= @task.title %></h1>
+
+<%= link_to edit_task_path(@task), class:"btn btn-outline-secondary ms-auto" do %>
+  <i class="fa-solid fa-pen"></i>
+  <span>Edit this task</span>
+  <% end %>
+
+</div>
+
+<div class="highlight mb-3">
+  <p><%= @task.details %></p>
+</div>
+
+<div class="mb-3">
+<% if @task.completed %>
+  <i class="fa-regular fa-square-check"></i>
+  <span>This task is completed</span>
+<% else %>
+  <i class="fa-regular fa-square"></i>
+  <span>This task is not completed yet</span>
+<% end %>
+</div>
+
+
+<%= render "back", task: @task %>
